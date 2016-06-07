@@ -9,9 +9,6 @@ class Flips(var howMany:Int) extends Permutations {
   
   def ==(compared:Permutations): Boolean =
   {
-    if(this.getClass == compared.getClass && howMany%2 == compared.amnt%2)
-      true
-    else
-      false
+   this.getClass == compared.getClass && howMany%2 == compared.amnt%2
   }
 }
