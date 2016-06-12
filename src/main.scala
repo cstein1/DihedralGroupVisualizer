@@ -86,10 +86,26 @@ object Main {
      Example.RotateLeft
      Example.Print
      Example.Flip
+     Example.Flip
      Example.RotateLeft
      Example.Print
      Example.RotateRight
+     Example.Print
      Example.Flip
+     Example.Print
+   }
+   
+   def Trying2BreakIt = {
+     var n = 4
+     var Example = new NGon(n)
+     Example.Print
+     Example.Flip
+     Example.Print
+     Example.RotateLeft
+     Example.Print
+     Example.Flip
+     Example.Print
+     Example.RotateLeft
      Example.Print
    }
    
@@ -97,6 +113,7 @@ object Main {
    {
      //TestBinaryOperations
      //TestEachIndividually
-     TestUpdate
+     //TestUpdate
+     Trying2BreakIt
    }
 }
