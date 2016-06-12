@@ -117,11 +117,12 @@ object Main {
 //     Example.Print
   }
    
-   def main(args: Array[String]): Unit = 
-   {
-     //TestBinaryOperations
-     //TestEachIndividually
-     //TestUpdate
-     //Trying2BreakIt
-   }
+  
+  def main(args: Array[String]): Unit = 
+  {
+    //TestBinaryOperations
+    //TestEachIndividually
+    //TestUpdate
+    //Trying2BreakIt
+  }
 }
