@@ -95,7 +95,7 @@ object Main {
      Example.Print
    }
    
-   def Trying2BreakIt = {
+  def Trying2BreakIt = {
      var n = 4
      var Example = new NGon(n)
      Example.Print
@@ -107,13 +107,21 @@ object Main {
      Example.Print
      Example.RotateLeft
      Example.Print
-   }
+     
+//     Example.Print
+//     Example.Flip
+//     Example.Print
+//     Example.RotateRight
+//     Example.Print
+//     Example.Flip
+//     Example.Print
+  }
    
    def main(args: Array[String]): Unit = 
    {
      //TestBinaryOperations
      //TestEachIndividually
      //TestUpdate
-     Trying2BreakIt
+     //Trying2BreakIt
    }
 }
