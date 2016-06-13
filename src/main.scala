@@ -1,4 +1,6 @@
-// import NGon.MyImplicits._
+import scalafx.application.JFXApp
+import scalafx.scene.Scene
+import scalafx.scene.control._
 import scala.collection.mutable.ListBuffer
 
 object Main {
@@ -117,6 +119,19 @@ object Main {
 //     Example.Print
   }
    
+  def GUI(args: Array[String]):Unit = {
+    val app = new JFXApp {
+      stage = new JFXApp.PrimaryStage {
+        title = "Rotations"
+        scene = new Scene(400, 300) {
+          val button = new Button("Rotate Right")
+        
+          content = button
+        }
+      }
+    }
+    app.main(args)
+  }
   
   def main(args: Array[String]): Unit = 
   {
@@ -124,5 +139,7 @@ object Main {
     //TestEachIndividually
     //TestUpdate
     //Trying2BreakIt
+    
+    GUI(args)
   }
 }
