@@ -6,12 +6,15 @@ class NGon(numEdges:Int) {
 	var state = new stateClass
 	var restart = false;
 
-
 	for( a <- 0 until numEdges)
 	{
 		perm += a+1;
 		identity += a+1;
 	}
+	
+	def loc(i:Int) = perm(i)
+	
+	def reversedLoc(i:Int) = loc((numEdges - i)%numEdges).toString
 
 	def Display(message:String = ""): Unit = 
 	{
@@ -32,7 +35,7 @@ class NGon(numEdges:Int) {
 		}
 	}
 
-	def RotateRight: Unit = 
+	def RotateLeft: Unit = 
 	{
 		val holder = perm.clone;
 		for(a <- 0 until numEdges){
@@ -42,7 +45,7 @@ class NGon(numEdges:Int) {
 		Update;
 	}
 
-	def RotateLeft: Unit = 
+	def RotateRight: Unit = 
 	{
 	  val holder = perm.clone;
 		for(a <- 0 until numEdges){
@@ -179,5 +182,9 @@ class NGon(numEdges:Int) {
 	  println("Orientation"+"| "+ showOri)
 	  println("State      "+"| "+ showState)
 	  println("------------------------------------------------------")
+	}
+	
+	def newNumSides(n:Int) = {
+	  var newNGon = new NGon(n)
 	}
 }
