@@ -7,7 +7,7 @@ import scalafx.scene.text._
 import scalafx.event.ActionEvent
 import scalafx.event.EventHandler
 import scalafx.scene.layout.HBox
-
+ 
 import scala.collection.mutable.ListBuffer
 
 object Main {  
