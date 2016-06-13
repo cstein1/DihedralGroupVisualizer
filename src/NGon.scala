@@ -1,11 +1,13 @@
 import scala.collection.mutable.ListBuffer
 
-class NGon(numEdges:Int) {
+class NGon(private var numEdges:Int) {
 	var perm = ListBuffer[Int]();
 	var identity = ListBuffer[Int]();
 	var state = new stateClass
 	var restart = false;
 
+	if(numEdges < 3) numEdges = 3
+	
 	for( a <- 0 until numEdges)
 	{
 		perm += a+1;
@@ -184,7 +186,8 @@ class NGon(numEdges:Int) {
 	  println("------------------------------------------------------")
 	}
 	
-	def newNumSides(n:Int) = {
-	  var newNGon = new NGon(n)
+	def newVal(n:Int) = {
+	  numEdges = n
+	  if(numEdges < 3) numEdges = 3
 	}
 }

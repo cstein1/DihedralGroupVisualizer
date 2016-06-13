@@ -1,4 +1,5 @@
 import scala.collection.mutable.ListBuffer
+import scala.util.matching.Regex
 
 object Tests {
      def TestEachIndividually: Unit = 
@@ -110,9 +111,13 @@ object Tests {
   
   def main(args: Array[String]): Unit = 
   {
-    TestBinaryOperations
+    //TestBinaryOperations
     //TestEachIndividually
     //TestUpdate
     //Trying2BreakIt
+    val num = new Regex("\\d*")
+    var numsides = (num findAllIn "hi").mkString
+    println(numsides.isEmpty.toString)
+    println(numsides)
   }
 }
