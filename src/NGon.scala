@@ -88,7 +88,7 @@ class NGon(numEdges:Int) {
   }
 	
 	class stateClass { 
-	  var s = ListBuffer[Permutations]()
+	  var s = ListBuffer[Permutations](new Rotations(0), new Flips(0))
 	  def +=(p:ListBuffer[Permutations]) = {
   		for(i <- p)
 		    s.prepend(i)
@@ -117,6 +117,16 @@ class NGon(numEdges:Int) {
 			  println(string)
 	  }
 	  	
+	  def StateString:String = 
+	  {
+	    var string:String = ""
+	    for(a <- s.indices){
+			  string += s(a).stringVer
+		  }
+	    println(string)
+	    string
+	  }
+	  
     def ReduceState(n:Int):Unit =
 	  {
       if(n==state.length-1) return

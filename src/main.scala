@@ -1,6 +1,12 @@
+import scalafx.Includes._
 import scalafx.application.JFXApp
 import scalafx.scene.Scene
 import scalafx.scene.control._
+import scalafx.scene.shape._
+import scalafx.scene.text._
+import scalafx.event.ActionEvent
+import scalafx.event.EventHandler
+
 import scala.collection.mutable.ListBuffer
 
 object Main {
@@ -109,24 +115,83 @@ object Main {
      Example.Print
      Example.RotateLeft
      Example.Print
-     
-//     Example.Print
-//     Example.Flip
-//     Example.Print
-//     Example.RotateRight
-//     Example.Print
-//     Example.Flip
-//     Example.Print
   }
    
+  
+    var n = 12
+    var ngon = new NGon(n)
+    ngon.Print
+    var Points = List[Double]()
+    
+
+    
   def GUI(args: Array[String]):Unit = {
     val app = new JFXApp {
       stage = new JFXApp.PrimaryStage {
         title = "Rotations"
-        scene = new Scene(400, 300) {
-          val button = new Button("Rotate Right")
-        
-          content = button
+        scene = new Scene(200, 250) {
+          val drawing = Polygon()//0,0,100,0,100,100,0,100)
+          drawing.layoutX = 100
+          drawing.layoutY = 150
+          var labels = List()
+          var xlab = 0.0
+          var ylab = 0.0
+          for(i <- 0 until n; theta = i*2*math.Pi/n) {
+            println(theta)
+            drawing.getPoints.addAll(50*math.cos(theta),50*math.sin(theta))
+            
+            xlab = 55.0*math.cos(theta)
+            ylab = 55.0*math.sin(theta)
+            
+            labels :: List(new Text(xlab.toInt,ylab.toInt, i.toString))
+          }
+          
+          drawing.rotate = 45
+          
+          val stateView = new Label("STATE")
+          stateView.layoutY = 70
+          stateView.layoutX = 82
+          
+          val buttonRight = new Button("Rotate Right")
+          val buttonLeft = new Button("Rotate Left")
+          val buttonFlip = new Button("Flip")
+          buttonRight.layoutX = 100
+          buttonRight.layoutY = 10
+          buttonLeft.layoutX = 20
+          buttonLeft.layoutY = 10
+          buttonFlip.layoutX = 80
+          buttonFlip.layoutY = 40
+          
+          
+          var contents = List(buttonRight,buttonLeft, buttonFlip, stateView, drawing)
+//          contents += new Label{
+//            text = "hi"
+//            layoutY = 10
+//            layoutX = 10
+//          }
+//          for(i <- 0 until n-1){
+//            contents = contents + List[labels(i)]
+//          }
+          
+          
+          content = contents
+          
+          buttonRight.onAction = (e:ActionEvent) => {
+        	  ngon.RotateRight
+        	  ngon.Print
+        	  stateView.setText(""+ngon.state.StateString)
+          }
+          buttonLeft.onAction = (e:ActionEvent) => {
+        	  ngon.RotateLeft
+        	  ngon.Print
+        	  stateView.text = ngon.state.StateString
+          }
+          buttonFlip.onAction = (e:ActionEvent) => {
+        	  ngon.Flip
+        	  ngon.Print
+        	  stateView.text = ngon.state.StateString
+          }
+          
         }
       }
     }
