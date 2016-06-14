@@ -55,7 +55,7 @@ object Main {
     def preProgram():Scene = {
             new Scene(400,50) {
             val label = new Label{
-              text = "Please enter an int (2+): "
+              text = "Please enter an int (>2): "
               layoutY = 10
             }
             val textField = new TextField{
