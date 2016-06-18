@@ -9,7 +9,6 @@ import scalafx.event.EventHandler
 import scalafx.scene.layout.HBox
  
 import scala.collection.mutable.ListBuffer
-import scala.util.matching.Regex
 
 object Main {  
     var n = 10
@@ -17,82 +16,18 @@ object Main {
     ngon.Print
     var Points = List[Double]()
     
-
-    def restart(args:Array[String]):Unit = {
-//      val app = new JFXApp {
-//        stage = new JFXApp.PrimaryStage{
-//            scene = new Scene(100,100) {
-//            println("clicked")
-//            val label1 = new Label("Enter the number of sides you want: ")
-//            val textField = new TextField
-//            val hb = new HBox()
-//            hb.getChildren.addAll(label1, textField)
-//            hb.setSpacing(10)
-//            val button = new Button("OK")
-//            button.onAction = (e:ActionEvent) => {
-//              if(textField.text == "\\d*"){ 
-//                n = 1
-//                ngon = new NGon(n)
-//                GUI(args)
-//              }
-//              else{
-//               textField.text = "Please enter an integer" 
-//              }
-//            }
-//          }
-//        }
-//      }
-      print("hi")
-    }
-    
-    val app = new JFXApp{
-        stage = new JFXApp.PrimaryStage {
+  def GUI(args: Array[String]):Unit = {
+    val app = new JFXApp {
+      stage = new JFXApp.PrimaryStage {
         title = "Rotations"
-        scene = preProgram
-      }
-    }
-    
-    def preProgram():Scene = {
-            new Scene(400,50) {
-            val label = new Label{
-              text = "Please enter an int (>2): "
-              layoutY = 10
-            }
-            val textField = new TextField{
-              text = ""
-              layoutY = 10
-              layoutX = 130
-            }
-            val button = new Button{
-              layoutX = 300
-              layoutY = 10
-              text = "OK"
-              onAction = (e:ActionEvent) => {
-                val num = new Regex("\\d*")
-                var numsides = (num findAllIn textField.getText.toString.trim).mkString//.toInt
-                if(numsides == "")
-                  textField.text = "Enter Int > 2"
-                else {
-                  n = numsides.toInt
-                  ngon = new NGon(n)
-                  ngon.Print
-                  app.stage.scene = GUI
-                }
-              }
-            }
-            content = List(button,textField,label)
-          }
-    }
-    
-  def GUI():Scene = {
-      new Scene(200, 250) {
-      val menuBar = new MenuBar
-      val fileMenu = new Menu("File")
-      val exitItem = new MenuItem("Exit")
+        scene = new Scene(200, 250) {
+          val menuBar = new MenuBar
+          val fileMenu = new Menu("File")
+          val exitItem = new MenuItem("Exit")
           exitItem.onAction = (e:ActionEvent) => sys.exit(0)
           val editMenu = new Menu("Interact")
-          val numSides = new MenuItem("Number Sides")
-          numSides.onAction = (e:ActionEvent) => app.stage.scene = preProgram
+          val numSides = new MenuItem("Change Number of Sides")
+//          numSides.onAction = (e:ActionEvent) => restart(args)
           
           fileMenu.items = List(exitItem)
           editMenu.items = List(numSides)
@@ -173,10 +108,13 @@ object Main {
 
           
         }
+      }
+    }
+    app.main(args)
   }
   
   def main(args: Array[String]): Unit = 
   {
-    app.main(args)
+    GUI(args)
   }
 }
