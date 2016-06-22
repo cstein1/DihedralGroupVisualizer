@@ -166,7 +166,7 @@ class NGon(private var numEdges:Int) {
 		    perm2.newamnt(perm2.amnt%2)
 		    return
 		  }
-      throw error("Error. Type of permutation not recognized.")
+      throw sys.error("Error. Type of permutation not recognized.")
 	  }
   }
 	

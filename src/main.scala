@@ -9,7 +9,6 @@ import scalafx.event.EventHandler
 import scalafx.scene.layout.HBox
  
 import scala.collection.mutable.ListBuffer
-import scala.util.matching.Regex
 
 object Main {  
     var n = 10
@@ -20,51 +19,14 @@ object Main {
     val app = new JFXApp{
         stage = new JFXApp.PrimaryStage {
         title = "Rotations"
-        scene = preProgram
-      }
-    }
-    
-    def preProgram():Scene = {
-            new Scene(400,50) {
-            val label = new Label{
-              text = "Please enter an int (>2): "
-              layoutY = 10
-            }
-            val textField = new TextField{
-              text = ""
-              layoutY = 10
-              layoutX = 130
-            }
-            val button = new Button{
-              layoutX = 300
-              layoutY = 10
-              text = "OK"
-              onAction = (e:ActionEvent) => {
-                val num = new Regex("\\d*")
-                var numsides = (num findAllIn textField.getText.toString.trim).mkString//.toInt
-                if(numsides == "")
-                  textField.text = "Enter Int > 2"
-                else {
-                  n = numsides.toInt
-                  ngon = new NGon(n)
-                  ngon.Print
-                  app.stage.scene = GUI
-                }
-              }
-            }
-            content = List(button,textField,label)
-          }
-    }
-    
-  def GUI():Scene = {
-      new Scene(200, 250) {
-      val menuBar = new MenuBar
-      val fileMenu = new Menu("File")
-      val exitItem = new MenuItem("Exit")
+        scene = new Scene(200, 250) {
+          val menuBar = new MenuBar
+          val fileMenu = new Menu("File")
+          val exitItem = new MenuItem("Exit")
           exitItem.onAction = (e:ActionEvent) => sys.exit(0)
           val editMenu = new Menu("Interact")
-          val numSides = new MenuItem("Number Sides")
-          numSides.onAction = (e:ActionEvent) => app.stage.scene = preProgram
+          val numSides = new MenuItem("Change Number of Sides")
+//          numSides.onAction = (e:ActionEvent) => restart(args)
           
           fileMenu.items = List(exitItem)
           editMenu.items = List(numSides)
@@ -145,10 +107,13 @@ object Main {
 
           
         }
+      }
+    }
+    app.main(args)
   }
   
   def main(args: Array[String]): Unit = 
   {
-    app.main(args)
+    GUI(args)
   }
 }
