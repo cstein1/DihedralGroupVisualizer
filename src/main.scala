@@ -64,7 +64,7 @@ object Main {
       exitItem.onAction = (e: ActionEvent) => sys.exit(0)
       val editMenu = new Menu("Interact")
       val numSides = new MenuItem("Change Number of Sides")
-      numSides.onAction = (e:ActionEvent) => scene = preProgram
+      numSides.onAction = (e:ActionEvent) => app.stage.scene = preProgram
 
       fileMenu.items = List(exitItem)
       editMenu.items = List(numSides)
