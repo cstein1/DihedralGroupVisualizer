@@ -80,7 +80,7 @@ object Main {
       var xlab = 0.0
       var ylab = 0.0
       for (i <- 0 until n; theta = i * 2 * math.Pi / n) {
-        println(theta)
+        //println(theta)
         drawing.getPoints.addAll(50 * math.cos(theta), 50 * math.sin(theta))
 
         xlab = 55.0 * math.cos(theta) + 95
@@ -113,7 +113,7 @@ object Main {
 
       buttonRight.onAction = (e: ActionEvent) => {
         ngon.RotateRight
-        ngon.Print
+        //ngon.Print
         stateView.setText("" + ngon.state.StateString)
         for (i <- labels.indices) {
           labels(i).text = ngon.reversedLoc(i).toString
@@ -121,7 +121,7 @@ object Main {
       }
       buttonLeft.onAction = (e: ActionEvent) => {
         ngon.RotateLeft
-        ngon.Print
+        //ngon.Print
         stateView.text = ngon.state.StateString
         for (i <- labels.indices) {
           labels(i).text = ngon.reversedLoc(i).toString
@@ -129,7 +129,7 @@ object Main {
       }
       buttonFlip.onAction = (e: ActionEvent) => {
         ngon.Flip
-        ngon.Print
+        //ngon.Print
         stateView.text = ngon.state.StateString
         for (i <- labels.indices) {
           labels(i).text = ngon.reversedLoc(i).toString
